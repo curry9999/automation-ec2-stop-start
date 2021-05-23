@@ -21,7 +21,11 @@ export class IamRoleStack extends Stack {
     });
     this.lambdarole.addToPolicy(new PolicyStatement({
       resources: ['*'],
-      actions: ['ec2:DescribeInstances', 'ec2:StartInstances'],
+      actions: [
+        'ec2:DescribeInstances',
+        'ec2:StartInstances',
+        'ec2:StopInstances',
+      ],
     }));
   }
 }
@@ -50,7 +54,7 @@ export class LambdaStack extends Stack {
 
     // CloudWatch Events
     const ruleStart = new Rule(this, 'EventRuleAutoStart', {
-      schedule: Schedule.expression('cron(0/5 * * * ? *)'),
+      schedule: Schedule.expression(this.node.tryGetContext('cron_start_ec2')),
     });
     ruleStart.addTarget(new LambdaFunction(lambdaStart));
 
@@ -68,7 +72,7 @@ export class LambdaStack extends Stack {
 
     // CloudWatch Events
     const ruleStop = new Rule(this, 'EventRuleAutoStop', {
-      schedule: Schedule.expression('cron(0/5 * * * ? *)'),
+      schedule: Schedule.expression(this.node.tryGetContext('cron_stop_ec2')),
     });
     ruleStop.addTarget(new LambdaFunction(lambdaStop));
   }
