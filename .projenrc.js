@@ -12,6 +12,10 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-iam',
     '@aws-cdk/aws-events',
   ],
+  context: {
+    cron_start_ec2: 'cron(0 1 ? * MON-FRI *)',
+    cron_stop_ec2: 'cron(0 9 ? * MON-FRI *)',
+  },
 
   /* AwsCdkTypeScriptAppOptions */
   // appEntrypoint: 'main.ts',                                                 /* The CDK app's entrypoint (relative to the source directory, which is "src" by default). */
