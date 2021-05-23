@@ -48,7 +48,7 @@ export class LambdaStack extends Stack {
       code: new InlineCode(readFileSync('lambda/lambda-ec2-start.py', { encoding: 'utf-8' })),
       handler: 'index.main',
       timeout: Duration.seconds(300),
-      runtime: Runtime.PYTHON_3_6,
+      runtime: Runtime.PYTHON_3_8,
       role: props.lambdarole,
     });
 
@@ -66,7 +66,7 @@ export class LambdaStack extends Stack {
       code: new InlineCode(readFileSync('lambda/lambda-ec2-stop.py', { encoding: 'utf-8' })),
       handler: 'index.main',
       timeout: Duration.seconds(300),
-      runtime: Runtime.PYTHON_3_6,
+      runtime: Runtime.PYTHON_3_8,
       role: props.lambdarole,
     });
 

@@ -42,6 +42,7 @@ Object {
               "Action": Array [
                 "ec2:DescribeInstances",
                 "ec2:StartInstances",
+                "ec2:StopInstances",
               ],
               "Effect": "Allow",
               "Resource": "*",
