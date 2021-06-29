@@ -11,6 +11,7 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-lambda',
     '@aws-cdk/aws-iam',
     '@aws-cdk/aws-events',
+    '@typescript-eslint/eslint-plugin',
   ],
   context: {
     cron_start_ec2: 'cron(0 1 ? * MON-FRI *)',
