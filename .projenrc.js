@@ -1,7 +1,7 @@
 const { AwsCdkTypeScriptApp } = require('projen');
 
 const project = new AwsCdkTypeScriptApp({
-  cdkVersion: '1.114.0',
+  cdkVersion: '1.116.0',
   defaultReleaseBranch: 'main',
   jsiiFqn: 'projen.AwsCdkTypeScriptApp',
   name: 'automation-ec2-stop-start',
